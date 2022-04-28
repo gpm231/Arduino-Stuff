@@ -24,9 +24,7 @@ void loop() {
       //DEBUG
       //Serial.println(code);
 
-      if (code != zero) {
-        last_key = code;
-      } 
+      if (code != zero) {last_key = code;} //fixes button holding
 
       //MOVEMENT STUFF
       if (last_key == W) {current_dir = "forward";}
