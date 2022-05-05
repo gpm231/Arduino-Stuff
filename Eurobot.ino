@@ -25,7 +25,7 @@ String current_dir = "stop";
 
 void setup()
 {
-  IrReceiver.begin(11);
+  IrReceiver.begin(5);
   Serial.begin(9600);
   pwm.begin();
   pwm.setPWMFreq(50);
@@ -41,23 +41,24 @@ void loop() {
       if (code != zero) {last_key = code;} //fixes button holding
 
       //MOVEMENT STUFF
-      if (last_key == W) {current_dir = "forward";}
-      if (last_key == S) {current_dir = "backward";}
-      if (last_key == D) {current_dir = "right";}
-      if (last_key == A) {current_dir = "left";}
-      if (last_key == pOut) {
-        Serial.println("pinzas out");
-        setServo(15, 140);
-        setServo(14, 60);
+      if (last_key == W) {
+        //aqui para ir hacia adelante
       }
-      if (last_key == pIn) {
-        Serial.println("pinzas in");
-        setServo(15, 55);
-        setServo(14, 135);
+      if (last_key == S) {
+        //aqui para ir atras
+      }
+      if (last_key == D) {
+        //aqui a la derecha
+      }
+      if (last_key == A) {
+        //aqui a la izquierda
       }
 
       IrReceiver.resume();
-  } else {current_dir = "stop";}
+  } else {
+    current_dir = "stop";
+    //aqui para parar (es lo que se ejecuta cuando dejar de pulsar)
+  }
 
   //Serial.println(current_dir);
   delay(250);
